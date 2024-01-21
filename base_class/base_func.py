@@ -1,194 +1,212 @@
-from baseopensdk .api .base .v1 import *
-from baseopensdk import BaseClient 
-import os ,json ,re 
-def split_text_func (OO0OO0O0OO00O00OO :str ,OOO0000OOOOO00O00 :str ,OOO0O00000O0OOOO0 :object ):
-    OO0000O0O00OO000O =[]
-    if OO0OO0O0OO00O00OO ==1 :
-      O00000OO00O000OOO =[]
-      for O0OO0O0OO0OO00000 in OOO0O00000O0OOOO0 :
-        if O0OO0O0OO0OO00000 =='空格'or O0OO0O0OO0OO00000 =='space_symbol':
-          O00000OO00O000OOO .append ("\ ")
-        elif O0OO0O0OO0OO00000 =='换行符'or O0OO0O0OO0OO00000 =='newline_symbol':
-          O00000OO00O000OOO .append ("\\n")
-        elif O0OO0O0OO0OO00000 =='\\':
-              O00000OO00O000OOO .append ("\\\\")
-        elif O0OO0O0OO0OO00000 =='|'or O0OO0O0OO0OO00000 =='.'or O0OO0O0OO0OO00000 =='('or O0OO0O0OO0OO00000 ==')'or O0OO0O0OO0OO00000 =='['or O0OO0O0OO0OO00000 ==']'or O0OO0O0OO0OO00000 =='{'or O0OO0O0OO0OO00000 =='}'or O0OO0O0OO0OO00000 =='$'or O0OO0O0OO0OO00000 =='^'or O0OO0O0OO0OO00000 =='*'or O0OO0O0OO0OO00000 =='+'or O0OO0O0OO0OO00000 =='?':
-              O00000OO00O000OOO .append ("\\"+O0OO0O0OO0OO00000 )
-        else :
-          O00000OO00O000OOO .append (O0OO0O0OO0OO00000 )
-      O00O00O0O0OOOO0O0 ="|".join (O00000OO00O000OOO )
-      OOOOO00O00O0O0OOO =re .split (O00O00O0O0OOOO0O0 ,OOO0000OOOOO00O00 )
-      OO0000O0O00OO000O =[OOOO000O0OO0OOO0O for OOOO000O0OO0OOO0O in OOOOO00O00O0O0OOO if OOOO000O0OO0OOO0O is not None and OOOO000O0OO0OOO0O !='']
-    elif OO0OO0O0OO00O00OO ==4 or OO0OO0O0OO00O00OO ==17 :
-      for O0O00OO0OOO000O0O in OOO0000OOOOO00O00 :
-        O0OOOO00O0000OOOO =[O0O00OO0OOO000O0O ]
-        OO0000O0O00OO000O .append (O0OOOO00O0000OOOO )
-    elif OO0OO0O0OO00O00OO ==11 :
-      for O0O00OO0OOO000O0O in OOO0000OOOOO00O00 :
-        O0OOOO00O0000OOOO =[{"id":O0O00OO0OOO000O0O .get ("id")}]
-        OO0000O0O00OO000O .append (O0OOOO00O0000OOOO )
-    elif OO0OO0O0OO00O00OO ==18 or OO0OO0O0OO00O00OO ==21 :
-      OOO0000OOOOO00O00 =OOO0000OOOOO00O00 [0 ].get ("record_ids",[])
-      for O0O00OO0OOO000O0O in OOO0000OOOOO00O00 :
-        O0OOOO00O0000OOOO =[O0O00OO0OOO000O0O ]
-        OO0000O0O00OO000O .append (O0OOOO00O0000OOOO )
-    elif OO0OO0O0OO00O00OO ==19 or OO0OO0O0OO00O00OO ==20 :
-      try :
-        OOO0000OOOOO00O00 =OOO0000OOOOO00O00 [0 ].get ("text","")
-        O00000OO00O000OOO =[]
-        for O0OO0O0OO0OO00000 in OOO0O00000O0OOOO0 :
-          if O0OO0O0OO0OO00000 =='空格'or O0OO0O0OO0OO00000 =='space_symbol':
-            O00000OO00O000OOO .append ("\ ")
-          elif O0OO0O0OO0OO00000 =='换行符'or O0OO0O0OO0OO00000 =='newline_symbol':
-            O00000OO00O000OOO .append ("\\n")
-          elif O0OO0O0OO0OO00000 =='\\':
-                O00000OO00O000OOO .append ("\\\\")
-          elif O0OO0O0OO0OO00000 =='|'or O0OO0O0OO0OO00000 =='.'or O0OO0O0OO0OO00000 =='('or O0OO0O0OO0OO00000 ==')'or O0OO0O0OO0OO00000 =='['or O0OO0O0OO0OO00000 ==']'or O0OO0O0OO0OO00000 =='{'or O0OO0O0OO0OO00000 =='}'or O0OO0O0OO0OO00000 =='$'or O0OO0O0OO0OO00000 =='^'or O0OO0O0OO0OO00000 =='*'or O0OO0O0OO0OO00000 =='+'or O0OO0O0OO0OO00000 =='?':
-                O00000OO00O000OOO .append ("\\"+O0OO0O0OO0OO00000 )
-          else :
-            O00000OO00O000OOO .append (O0OO0O0OO0OO00000 )
-        O00O00O0O0OOOO0O0 ="|".join (O00000OO00O000OOO )
-        OOOOO00O00O0O0OOO =re .split (O00O00O0O0OOOO0O0 ,OOO0000OOOOO00O00 )
-        OO0000O0O00OO000O =[O0O000O00O00OOOO0 for O0O000O00O00OOOO0 in OOOOO00O00O0O0OOO if O0O000O00O00OOOO0 is not None and O0O000O00O00OOOO0 !='']
-      except Exception as OOO00000OO0O00O00 :
-        OO0000O0O00OO000O =[]
-    else :
-      OO0000O0O00OO000O =OOO0000OOOOO00O00 
-    return OO0000O0O00OO000O 
-def batch_split_rows_func (OOOO0000OO0OO0O0O :str ):
-  OOOO000OOO0OOO0OO =json .loads (OOOO0000OO0OO0O0O ).get ("parameters","")
-  if OOOO000OOO0OOO0OO =='':
+from baseopensdk.api.base.v1 import *
+from baseopensdk import BaseClient
+import time, json
+from lunardate import LunarDate
+
+
+###########################   批量公历农历互转   ###########################
+def batch_convert_date_func(data: str):
+  # print(data, flush=True)
+  data_json = json.loads(data).get("parameters","")
+  if data_json == '':
     return "参数错误"
-  O0O000OOOO000OOO0 =OOOO000OOO0OOO0OO .get ("app_token")
-  OOO0O0O00O0OO00OO =OOOO000OOO0OOO0OO .get ("personal_base_token")
-  O0OOOO000OOO0OO00 =OOOO000OOO0OOO0OO .get ("table_id")
-  O000000OO0000O0O0 =OOOO000OOO0OOO0OO .get ("view_id")
-  OOOO0OOOO0OOO0000 =OOOO000OOO0OOO0OO .get ("field")
-  OOOO000O00O0O0O0O =OOOO000OOO0OOO0OO .get ("field_type")
-  O00O0OOOO000O0O0O =OOOO000OOO0OOO0OO .get ("field_sync")
-  O0OOOOOOO00000OOO =OOOO000OOO0OOO0OO .get ("field_target")
-  OO0OO00O0O0000O0O =OOOO000OOO0OOO0OO .get ("op_type")
-  O0O00O0OOOOO00O00 =OOOO000OOO0OOO0OO .get ("field_father")
-  OO000O0OOO0O0O000 =OOOO000OOO0OOO0OO .get ("delete_original_record")
-  O0OOOO000O00O00O0 =OOOO000OOO0OOO0OO .get ("field_mapping")
-  O0OO00O0OOOOOO000 =OOOO000OOO0OOO0OO .get ("separater")
-  OOOOOOOOOO00OO0OO :BaseClient =BaseClient .builder ().app_token (O0O000OOOO000OOO0 ).personal_base_token (OOO0O0O00O0OO00OO ).build ()
-  if OOOO000O00O0O0O0O ==19 or OOOO000O00O0O0O0O ==20 :
-    if O0OOOOOOO00000OOO =="":
-      try :
-        O00O00OO00O0OO00O =CreateAppTableFieldRequest ().builder ().table_id (O0OOOO000OOO0OO00 ).request_body (AppTableField .builder ().field_name ("文本分行（自动添加）").type (1 ).build ()).build ()
-        O00OOOOOO0O00000O =OOOOOOOOOO00OO0OO .base .v1 .app_table_field .create (O00O00OO00O0OO00O )
-        O0OOOOOOO00000OOO ="文本分行（自动添加）"
-      except Exception as O0O00OOO00O0O0O00 :
-        O0OOOOOOO00000OOO ="文本分行（自动添加）"
-  OOOOO00OO00OO0O00 =True 
-  OO00OO000O0OO0O0O =""
-  while OOOOO00OO00OO0O00 :
-    O0O0O0O0OO0000O0O =ListAppTableRecordRequest .builder ().page_size (500 ).view_id (O000000OO0000O0O0 ).filter ("").table_id (O0OOOO000OOO0OO00 ).page_token (OO00OO000O0OO0O0O ).build ()
-    O0OO000O00OO0000O =OOOOOOOOOO00OO0OO .base .v1 .app_table_record .list (O0O0O0O0OO0000O0O )
-    OO0O000O00O000000 =getattr (O0OO000O00OO0000O .data ,'items',[])
-    OOOOO00OO00OO0O00 =O0OO000O00OO0000O .data .has_more 
-    OO00OO000O0OO0O0O =O0OO000O00OO0000O .data .page_token 
-    OO0OO000O00000OO0 =O0OO000O00OO0000O .data .total 
-    O0O000O0OO0OO0O00 ='成功拆分 '+str (OO0OO000O00000OO0 )+' 条数据'
-    OOO0O0OOO00O0OO0O =[]
-    O0OOOOOOOO0O0O000 =[]
-    for OO0O0OOO00O00OO0O in OO0O000O00O000000 :
-      OOO0O0OOO00O0OO0O .append (OO0O0OOO00O00OO0O .record_id )
-      OOOO00O0000OOOO00 =OO0O0OOO00O00OO0O .fields 
-      for OO0O0000OO00O0O0O ,O0OOO00O0000OO0O0 in OOOO00O0000OOOO00 .items ():
-        OO000OO0O00O0OOO0 =[]
-        if OO0O0000OO00O0O0O ==OOOO0OOOO0OOO0000 :
-          OO000OO0O00O0OOO0 =split_text_func (OOOO000O00O0O0O0O ,O0OOO00O0000OO0O0 ,O0OO00O0OOOOOO000 )
-          for OOOOO0O000O0O00OO in OO000OO0O00O0OOO0 :
-            O00O000O000O0OOOO ={}
-            if O0OOOOOOO00000OOO =="":
-              O00O000O000O0OOOO [OOOO0OOOO0OOO0000 ]=OOOOO0O000O0O00OO 
-            else :
-              if OOOO000O00O0O0O0O ==19 or OOOO000O00O0O0O0O ==20 :
-                O00O000O000O0OOOO [O0OOOOOOO00000OOO ]=OOOOO0O000O0O00OO 
-              else :
-                O00O000O000O0OOOO [OOOO0OOOO0OOO0000 ]=OOOOO0O000O0O00OO 
-            if (OO0OO00O0O0000O0O =='子记录'or OO0OO00O0O0000O0O =='Child Records')and O0O00O0OOOOO00O00 !='':
-              O00O000O000O0OOOO [O0O00O0OOOOO00O00 ]=[OO0O0OOO00O00OO0O .record_id ]
-            if len (O00O0OOOO000O0O0O )!=0 :
-              for OOO0OO0OO0O000O0O in O00O0OOOO000O0O0O :
-                if O0OOOO000O00O00O0 =='{}':
-                  O00O000O000O0OOOO [OOO0OO0OO0O000O0O ]=OOOO00O0000OOOO00 .get (OOO0OO0OO0O000O0O ,None )
-                else :
-                  O0OO0OOO0O000O0OO =json .loads (O0OOOO000O00O00O0 )
-                  if O0OO0OOO0O000O0OO .get (OOO0OO0OO0O000O0O )is None :
-                    O00O000O000O0OOOO [OOO0OO0OO0O000O0O ]=OOOO00O0000OOOO00 .get (OOO0OO0OO0O000O0O ,None )
-                  else :
-                    if OOOOO0O000O0O00OO ==O0OO0OOO0O000O0OO .get (OOO0OO0OO0O000O0O ):
-                      O00O000O000O0OOOO [OOO0OO0OO0O000O0O ]=OOOO00O0000OOOO00 .get (OOO0OO0OO0O000O0O ,None )
-                    else :
-                      O00O000O000O0OOOO [OOO0OO0OO0O000O0O ]=None 
-            O0OOOOOOOO0O0O000 .append ({"fields":O00O000O000O0OOOO })
-    O0O000O0OO0OO0O00 =batch_create_record_func (O0O000OOOO000OOO0 ,OOO0O0O00O0OO00OO ,O0OOOO000OOO0OO00 ,O0OOOOOOOO0O0O000 )
-    if len (OO000O0OOO0O0O000 )!=0 and (OO0OO00O0O0000O0O =='独立记录'or OO0OO00O0O0000O0O =='Independent Records'):
-      O0O000O0OO0OO0O00 =batch_delete_record_func (O0O000OOOO000OOO0 ,OOO0O0O00O0OO00OO ,O0OOOO000OOO0OO00 ,OOO0O0OOO00O0OO0O )
-  return O0O000O0OO0OO0O00 
-def get_field_type_func (OOO0O0O0OO0OO0OOO :str ,O0O0OO0OO0OOO0OOO :str ,OO00O0O00OO0O0O00 :str ,OOO0OOOOOO00OOOO0 :str ,OOO0O00OOO000000O :str ):
-  O00O0OO0O0O0OO000 :BaseClient =BaseClient .builder ().app_token (OOO0O0O0OO0OO0OOO ).personal_base_token (O0O0OO0OO0OOO0OOO ).build ()
-  OOO0O0OOO00000OO0 =ListAppTableFieldRequest .builder ().page_size (300 ).table_id (OO00O0O00OO0O0O00 ).view_id (OOO0OOOOOO00OOOO0 ).build ()
-  OOOOOOOOO0OO0O0O0 =O00O0OO0O0O0OO000 .base .v1 .app_table_field .list (OOO0O0OOO00000OO0 )
-  O00OOOO0000O0OO00 =getattr (OOOOOOOOO0OO0O0O0 .data ,'items')or []
-  OOOOO00000O00OOOO ="Text"
-  for O0O0OOO00OOOOOO0O in O00OOOO0000O0OO00 :
-    if OOO0O00OOO000000O ==O0O0OOO00OOOOOO0O .field_name :
-      if O0O0OOO00OOOOOO0O .ui_type =='Text':
-        OOOOO00000O00OOOO ="Text"
-      elif O0O0OOO00OOOOOO0O .ui_type =='MultiSelect':
-            OOOOO00000O00OOOO ="MultiSelect"
-      elif O0O0OOO00OOOOOO0O .ui_type =='User':
-        OOOOO00000O00OOOO ="User"
-      elif O0O0OOO00OOOOOO0O .ui_type =='Lookup':
-        OOOOO00000O00OOOO ="Lookup"
-      elif O0O0OOO00OOOOOO0O .ui_type =='Formula':
-        OOOOO00000O00OOOO ="Formula"
-      else :
-        OOOOO00000O00OOOO ="Text"
-  return OOOOO00000O00OOOO 
-def batch_create_record_func (O0000OO0OOO00OOO0 :str ,OOOOOOOOOO00OOO00 :str ,O0OO0OO000O0OOOOO :str ,OO0OO000O0OOOO0OO :object ):
-  try :
-    OOOO0OOO00O00O00O :BaseClient =BaseClient .builder ().app_token (O0000OO0OOO00OOO0 ).personal_base_token (OOOOOOOOOO00OOO00 ).build ()
-    O00000OO000O00OOO =500 
-    for OOOO0000OOO0O0OO0 in range (0 ,len (OO0OO000O0OOOO0OO ),O00000OO000O00OOO ):
-      O0O0OOO00OO00OO00 =OO0OO000O0OOOO0OO [OOOO0000OOO0O0OO0 :OOOO0000OOO0O0OO0 +O00000OO000O00OOO ]
-      O0000000000OO0000 =0 
-      while O0000000000OO0000 <3 :
-        try :
-          O000OOOO00OOO00OO =BatchCreateAppTableRecordRequest ().builder ().table_id (O0OO0OO000O0OOOOO ).request_body (BatchCreateAppTableRecordRequestBody .builder ().records (O0O0OOO00OO00OO00 ).build ()).build ()
-          O0OOO00000000O00O =OOOO0OOO00O00O00O .base .v1 .app_table_record .batch_update (O000OOOO00OOO00OO )
-          O0000000000OO0000 =3 
-          OO0OOOOOOO0O0O000 ="拆分数据保存成功"
-        except Exception as O0O00000000OOOO0O :
-          O0000000000OO0000 =O0000000000OO0000 +1 
-          if O0000000000OO0000 ==3 :
-            OO0OOOOOOO0O0O000 ="重试写入超过2次，数据操作失败，请检查网络！"
+  # print(data_json)
+
+  APP_TOKEN = data_json.get("app_token")
+  PERSONAL_BASE_TOKEN = data_json.get("personal_base_token")
+  TABLE_ID = data_json.get("table_id")
+  VIEW_ID = data_json.get("view_id")
+
+  # 转换类型
+  TYPE = data_json.get("type")
+
+  # 源字段
+  FIELD_SOURCE = data_json.get("field_source")
+
+  # 目标字段
+  FIELD_TARGET = data_json.get("field_target")
+  FIELD_LUNAR_CN = ""
+
+  LeapMonthList = { "1900": "8", "1903": "5", "1906": "4", "1909": "2", "1911": "6", "1914": "5", "1917": "2", "1919": "7", "1922": "5", "1925": "4", "1928": "2", "1930": "6", "1933": "5", "1936": "3", "1938": "7", "1941": "6", "1944": "4", "1947": "2", "1949": "7", "1952": "5", "1955": "3", "1957": "8", "1960": "6", "1963": "4", "1966": "3", "1968": "7", "1971": "5", "1974": "4", "1976": "8", "1979": "6", "1982": "4", "1984": "10", "1987": "6", "1990": "5", "1993": "3", "1995": "8", "1998": "5", "2001": "4", "2004": "2", "2006": "7", "2009": "5", "2012": "4", "2014": "9", "2017": "6", "2020": "4", "2023": "2", "2025": "6", "2028": "5", "2031": "3", "2033": "11", "2036": "6", "2039": "5", "2042": "2", "2044": "7", "2047": "5", "2050": "3", "2052": "8", "2055": "6", "2058": "4", "2061": "3", "2063": "7", "2066": "5", "2069": "4", "2071": "8", "2074": "6", "2077": "4", "2080": "3", "2082": "7", "2085": "5", "2088": "4", "2090": "8", "2093": "6", "2096": "4", "2099": "2" }
+  nStr_day = ["初一", "初二", "初三", "初四", "初五", "初六", "初七", "初八", "初九", "初十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十", "廿一", "廿二", "廿三", "廿四", "廿五", "廿六", "廿七", "廿八", "廿九", "三十"]
+  nStr_month = ["正", "二", "三", "四", "五", "六", "七", "八", "九", "十", "冬", "腊"]
+
+
+  # print("=" * 30)
+
+  # print(APP_TOKEN)
+  # print(PERSONAL_BASE_TOKEN)
+  # print(TABLE_ID)
+  # print(VIEW_ID)
+  # print(TYPE)
+
+  # print(FIELD_SOURCE)
+  # print(FIELD_TARGET)
+
+  # print("=" * 30)
+
+
+  # 1. 构建client
+  client: BaseClient = BaseClient.builder() \
+      .app_token(APP_TOKEN) \
+      .personal_base_token(PERSONAL_BASE_TOKEN) \
+      .build()
+
+  # 获取【农历（中文）】字段
+  try:
+    create_field_request = CreateAppTableFieldRequest().builder() \
+      .table_id(TABLE_ID) \
+      .request_body(
+        AppTableField.builder() \
+          .field_name("农历（中文）") \
+          .type(1) \
+          .build()
+      ) \
+      .build()
+
+    create_field_response = client.base.v1.app_table_field.create(
+          create_field_request)
+    FIELD_LUNAR_CN = "农历（中文）"
+  except Exception as e:
+    FIELD_LUNAR_CN = "农历（中文）"
+
+
+  # 2. 遍历记录
+  has_more = True
+  page_token = ""
+
+
+  while has_more:
+    list_record_request = ListAppTableRecordRequest.builder() \
+      .page_size(500) \
+      .view_id(VIEW_ID) \
+      .filter("") \
+      .table_id(TABLE_ID) \
+      .page_token(page_token) \
+      .build()
+
+    list_record_response = client.base.v1.app_table_record.list(
+          list_record_request)
+    records = getattr(list_record_response.data, 'items', [])
+
+    has_more = list_record_response.data.has_more
+    page_token = list_record_response.data.page_token
+    total = list_record_response.data.total
+    result = '成功转换 ' + str(total) + ' 条数据'
+
+    # print(list_record_response.data.__dict__)
+
+    # 如果字段列表为空时，执行清空整个视图的数据
+    record_list = []
+    for record_item in records:
+      # print(record_item.__dict__, flush=True)
+      # print("=" * 30)
+
+      fields = record_item.fields
+      # print(fields)
+      # print(len(fields.items()), flush=True)
+
+      field_list = {}
+      for key, value in fields.items():
+        if key == FIELD_SOURCE:   
+          # print(str(key) + ':' + str(value))
+
+          try:
+            value = int(value)
+          except Exception as e:
+            value = value[0]
+
+          # print(value)
+
+
+          time_struct = time.gmtime(value / 1000 + 8 * 3600)
+          date_time_Y = int(time.strftime('%Y', time_struct))
+          date_time_M = int(time.strftime('%m', time_struct))
+          date_time_D = int(time.strftime('%d', time_struct))
+
+
+          timestamp = 0
+          isLeapMonth = 0
+          lunar_cn = ""
+          if TYPE == "农历转公历":
+            lunar_cn = fields.get(FIELD_LUNAR_CN, "")
+            if "闰" in lunar_cn:
+              isLeapMonth = 1
+
+            lunar_date = str(LunarDate(date_time_Y, date_time_M, date_time_D, isLeapMonth).toSolarDate())
+            timestamp = int(time.mktime(time.strptime(lunar_date,"%Y-%m-%d")))*1000
+
+            if isLeapMonth == 1:
+              lunar_cn = "闰" + nStr_month[date_time_M-1] + "月" + nStr_day[date_time_D-1]
+            else:
+              lunar_cn = nStr_month[date_time_M-1] + "月" + nStr_day[date_time_D-1]
+
+          else:
+            solar_date = LunarDate.fromSolarDate(date_time_Y, date_time_M, date_time_D)
+
+            if solar_date.isLeapMonth:
+                isLeapMonth = 1
+
+            if isLeapMonth == 1:
+              lunar_cn = "闰" + nStr_month[solar_date.month-1] + "月" + nStr_day[solar_date.day-1]
+            else:
+              lunar_cn = nStr_month[solar_date.month-1] + "月" + nStr_day[solar_date.day-1]
+
+            solar_date = str(solar_date.year)+"-"+str(solar_date.month)+"-"+str(solar_date.day)
+            timestamp = int(time.mktime(time.strptime(solar_date,"%Y-%m-%d")))*1000
+
+          field_list[FIELD_TARGET] = timestamp
+          field_list[FIELD_LUNAR_CN] = lunar_cn
+
+      record_list.append({"fields": field_list, "record_id": record_item.record_id})
+
+    # print(record_list)
+    result = batch_update_record_func(APP_TOKEN, PERSONAL_BASE_TOKEN, TABLE_ID, record_list)
+
+  # print(result, flush=True)
+  return result
+
+
+###########################   批量更新记录，按照每500条记录写入一次   ###########################
+def batch_update_record_func(APP_TOKEN: str, PERSONAL_BASE_TOKEN : str, TABLE_ID: str, record_list: object):
+
+  try:
+
+    # 1. 构建client
+    client: BaseClient = BaseClient.builder() \
+        .app_token(APP_TOKEN) \
+        .personal_base_token(PERSONAL_BASE_TOKEN) \
+        .build()
+
+    step = 500
+    for i in range(0, len(record_list), step):
+      new_record_list = record_list[i:i + step]
+      retry = 0
+      while retry < 3:
+        try:
+          # 2. 批量保存
+          batch_update_records_request = BatchUpdateAppTableRecordRequest().builder() \
+          .table_id(TABLE_ID) \
+          .request_body(
+            BatchUpdateAppTableRecordRequestBody.builder() \
+              .records(new_record_list) \
+              .build()
+          ) \
+          .build()
+          # print(batch_update_records_request.__dict__)
+
+          batch_update_records_response = client.base.v1.app_table_record.batch_update(
+              batch_update_records_request)
+          # print(batch_update_records_response.__dict__)
+          retry = 3
+          result = "数据保存成功"
+        except Exception as e:
+          retry = retry + 1
+          if retry == 3:
+            result = "重试写入超过2次，数据操作失败，请检查网络！"
             raise "重试写入超过2次，数据操作失败，请检查网络！"
-    return OO0OOOOOOO0O0O000 
-  except Exception as O0O00000000OOOO0O :
-    return "拆分数据保存失败"
-def batch_delete_record_func (OOO0O0O00OOO0OOO0 :str ,O0OO00O00OO0O0OOO :str ,OO00000OO0O00OO00 :str ,OOOO0OO00OO0OOOO0 ):
-  try :
-    OO000OOOO0O00000O :BaseClient =BaseClient .builder ().app_token (OOO0O0O00OOO0OOO0 ).personal_base_token (O0OO00O00OO0O0OOO ).build ()
-    OO00OOOO00O00OO00 =500 
-    for OOOOO00OOO00O0O0O in range (0 ,len (OOOO0OO00OO0OOOO0 ),OO00OOOO00O00OO00 ):
-      OO0OOOOO00O0O0OO0 =OOOO0OO00OO0OOOO0 [OOOOO00OOO00O0O0O :OOOOO00OOO00O0O0O +OO00OOOO00O00OO00 ]
-      OO0O00O000OO0OOOO =0 
-      while OO0O00O000OO0OOOO <3 :
-        try :
-          OOOOOO00OOO0OOOO0 =BatchDeleteAppTableRecordRequest ().builder ().app_token (OOO0O0O00OOO0OOO0 ).table_id (OO00000OO0O00OO00 ).request_body (BatchDeleteAppTableRecordRequestBody .builder ().records (OO0OOOOO00O0O0OO0 ).build ()).build ()
-          OOOO000000OO0OOO0 =OO000OOOO0O00000O .base .v1 .app_table_record .batch_delete (OOOOOO00OOO0OOOO0 )
-          OO0O00O000OO0OOOO =3 
-          return "删除成功"
-        except Exception as OOO000O000OO0OO0O :
-          OO0O00O000OO0OOOO =OO0O00O000OO0OOOO +1 
-          if OO0O00O000OO0OOOO ==3 :
-            O000O0O0O00O0OOOO ="重试删除记录超过2次，数据操作失败，请检查网络！"
-            raise "重试删除记录超过2次，数据操作失败，请检查网络！"
-    return O000O0O0O00O0OOOO
-  except Exception as OOO000O000OO0OO0O :
-    return "删除失败"
+
+    return result
+
+  except Exception as e:
+    return "数据保存失败"

@@ -15,6 +15,7 @@ frozenlist = ">=1.1.1"
 multidict = ">=4.5,<7.0"
 yarl = ">=1.0,<2.0"
 
+
 [package.extras]
 speedups = ["aiodns", "brotli", "cchardet"]
 
@@ -239,6 +240,14 @@ MarkupSafe = ">=2.0"
 
 [package.extras]
 i18n = ["Babel (>=2.7)"]
+
+[[package]]
+name = "lunardate"
+version = "0.2.2"
+description = "A Chinese Calendar Library in Pure Python"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "markupsafe"
@@ -490,7 +499,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10.0,<3.11"
-content-hash = "f7892429597ba52cfaa1d392d25d0f335cb32e233897e1ed7d7803a0e1d23d42"
+content-hash = "7f410468e28509ec086d15f80c5e96627476635b8ff4514e88061d50cbe19208"
 
 [metadata.files]
 aiohttp = []
@@ -513,6 +522,7 @@ iso8601 = []
 itsdangerous = []
 jedi = []
 jinja2 = []
+lunardate = []
 markupsafe = []
 multidict = []
 numpy = []
